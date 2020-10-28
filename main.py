@@ -43,7 +43,7 @@ def trigger():
 # Start board
 try:
     while True:
-        if not GPIO.input(btn_pin) and not isPlaying:
+        if not GPIO.input(btn_pin) and not isPlaying and not music.get_busy():
             isPlaying = True
             trigger()
             isPlaying = False
