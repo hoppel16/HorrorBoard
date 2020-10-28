@@ -6,7 +6,7 @@ import os
 # Variable Definition
 rly_pin = 26
 btn_pin = 16
-cur_dir = os.getcwd()
+cur_dir = os.path.dirname(os.path.realpath(__file__))
 sound_file = cur_dir + "/Alma TS.mp3"
 isPlaying = False
 
