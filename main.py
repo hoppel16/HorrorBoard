@@ -1,11 +1,13 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from pygame import mixer
+import os
 
 # Variable Definition
 rly_pin = 26
 btn_pin = 16
-sound_file = "Alma TS.mp3"
+cur_dir = os.getcwd()
+sound_file = cur_dir + "/Alma TS.mp3"
 isPlaying = False
 
 # Set up pins
