@@ -19,29 +19,22 @@ class Gpio:
 
 def setup_input(pin):
     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    # print("Setup pin", pin, "as INPUT with PULL_UP")
 
 
 def setup_output(pin, start):
     GPIO.setup(pin, GPIO.OUT)
     if start == "HIGH":
         GPIO.output(pin, GPIO.HIGH)
-        # print("Setup pin", pin, "as OUTPUT starting HIGH")
     else:
         GPIO.output(pin, GPIO.LOW)
-        # print("Setup pin", pin, "as OUTPUT starting LOW")
 
 
 def set_output(pin, level):
     if level == "HIGH":
         GPIO.output(pin, GPIO.HIGH)
-        # print("Set pin", pin, "to HIGH")
     else:
         GPIO.output(pin, GPIO.LOW)
-        # print("Set pin", pin, "to LOW")
 
 
 def read_input(pin):
-    # prompt = str(pin) + ", f <enter> to run: "
-    # return input(prompt)
     return GPIO.input(pin)

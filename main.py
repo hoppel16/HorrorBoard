@@ -17,9 +17,8 @@ my_trigger = trigger.Trigger1(board)
 try:
     while True:
         if not gpio.read_input(board.button) and not my_trigger.playing and not sound.is_busy():
-        # if gpio.read_input(board.button) == "f" and not my_trigger.playing and not sound.is_busy():
             my_trigger.play()
 
 finally:
-    # GPIO.cleanup()
+    GPIO.cleanup()
     print("Have A Nice Day!")
