@@ -45,3 +45,16 @@ class Trigger2:
         lights.strobe(self.board.light1, 3, 0.5)
         self.playing = False
 
+class Trigger3:
+    def __init__(self, board):
+        self.sound = os.path.dirname(os.path.realpath(__file__)) + "/demon_trigger.mp3"
+        self.board = board
+        self.playing = False
+        sound.load_sound(self.sound)
+        
+    def play(self):
+        self.playing = True
+        sound.play_sound()
+        sleep(0.7)
+        lights.strobe(self.board.light1, 30, 0.05)
+        self.playing = False
