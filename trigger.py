@@ -38,11 +38,10 @@ class Trigger2:
         self.playing = True
         sound.play_sound()
         sleep(0.5)
-        lights.strobe(self.board.light1, 6, 0.1)
-        lights.turn_on(self.board.light1)
-        sleep(2.6)
-        lights.turn_off(self.board.light1)
-        sleep(0.3)
-        lights.strobe(self.board.light1, 3, 0.05)
+        lights.strobe(self.board.light1, 12, 0.1)
+        lights.strobe(self.board.light1, 12, 0.2)
+        lights.strobe(self.board.light1, 7, 0.3)
+        lights.strobe(self.board.light1, 5, 0.4)
+        lights.strobe(self.board.light1, 3, 0.5)
         self.playing = False
 
