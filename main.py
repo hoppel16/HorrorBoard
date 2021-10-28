@@ -14,7 +14,7 @@ board = gpio.Gpio(button_pin, light1_pin, light2_pin, light3_pin)
 sound.init()
 
 # Choose which trigger for this board
-my_trigger = trigger.TriggerTest(board)
+my_trigger = trigger.Trigger3(board)
 
 try:
     while True:
