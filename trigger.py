@@ -28,6 +28,7 @@ class Trigger1:
         
 
 #Black flame sequence, Not done
+#Change lights to their proper relay, and LED pins
 class Trigger2:
     def __init__(self, board):
         file_name = "mary_final.mp3"
@@ -39,6 +40,43 @@ class Trigger2:
     def play(self):
         self.playing = True
         sound.play_sound()
+        sleep(0.7)
+        # Binx scare - relay 1
+        lights.strobe(self.board.light2, 20, 0.02)
+        lights.turn_off(self.board.light2)
+        #Black Flame Candle - LED 1
+        sleep(7.8)
+        lights.turn_on(self.board.light2)
+        #Floor Light - relay 2
+        sleep(2.5)
+        lights.turn_on(self.board.light2)
+        #Candle 1 - LED 2
+        sleep(1)
+        lights.turn_on(self.board.light2)
+        #Candle 2 - LED 3
+        sleep(2)
+        lights.turn_on(self.board.light2)
+        #Candle 3 - LED 4
+        sleep(2)
+        lights.turn_on(self.board.light2)
+        #Cauldron - is the fog machine
+        sleep(7.8)
+        lights.turn_on(self.board.light2)
+        #Mary scare
+        sleep(2.3)
+        lights.strobe(self.board.light2, 25, 0.02)
+        lights.turn_on(self.board.light2)
+        #turn off fog machine and floor lights here
+        lights.turn_off(self.board.light2)
+        lights.turn_off(self.board.light2)
+        sleep(5)
+        lights.turn_off(self.board.light2)
+        sleep(30)
+        #turn off all lights
+        lights.turn_off(self.board.light2)
+        lights.turn_off(self.board.light2)
+        lights.turn_off(self.board.light2)
+        lights.turn_off(self.board.light2)
         self.playing = False
         
 
