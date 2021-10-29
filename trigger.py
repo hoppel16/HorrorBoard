@@ -4,11 +4,14 @@ from time import sleep
 import sound
 import lights
 
+os_path = os.path.dirname(os.path.realpath(__file__)) + "/Sounds/"
+
 
 class Trigger1:
 
     def __init__(self, board):
-        self.sound = os.path.dirname(os.path.realpath(__file__)) + "/Winnie_Glorious_Morning.mp3"
+        file_name = "winnie_glorious_final.mp3"
+        self.sound = os_path + file_name
         self.board = board
         self.playing = False
         sound.load_sound(self.sound)
@@ -16,15 +19,18 @@ class Trigger1:
     def play(self):
         self.playing = True
         sound.play_sound()
+        sleep(0.5)
+        lights.strobe(self.board.light1, 1, 0.1)
         lights.turn_on(self.board.light1)
-        sleep(5.0)
+        sleep(8.0)
         lights.turn_off(self.board.light1)
         self.playing = False
         
 
 class Trigger2:
     def __init__(self, board):
-        self.sound = os.path.dirname(os.path.realpath(__file__)) + "/Winnie_Hellogoodbye.mp3"
+        file_name = "Winnie_Glorious_Final.mp3"
+        self.sound = os_path + file_name
         self.board = board
         self.playing = False
         sound.load_sound(self.sound)
@@ -41,7 +47,8 @@ class Trigger2:
         
 class Trigger3:
     def __init__(self, board):
-        self.sound = os.path.dirname(os.path.realpath(__file__)) + "/sara_trick_final.mp3"
+        file_name = "Winnie_Glorious_Final.mp3"
+        self.sound = os_path + file_name
         self.board = board
         self.playing = False
         sound.load_sound(self.sound)
@@ -60,7 +67,8 @@ class Trigger3:
         
 class TriggerTest:
     def __init__(self, board):
-        self.sound = os.path.dirname(os.path.realpath(__file__)) + "/Sara_amok_one.mp3"
+        file_name = "Winnie_Glorious_Final.mp3"
+        self.sound = os_path + file_name
         self.board = board
         self.playing = False
         sound.load_sound(self.sound)
