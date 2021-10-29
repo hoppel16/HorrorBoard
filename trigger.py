@@ -92,6 +92,10 @@ class Trigger3:
     def play(self):
         self.playing = True
         sound.play_sound()
+        sleep(3)
+        lights.turn_on(self.board.light1)
+        sleep(3)
+        lights.turn_off(self.board.light1)
         self.playing = False
         
 
