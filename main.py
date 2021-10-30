@@ -20,11 +20,7 @@ board = gpio.Gpio(button_pin, light1_pin, light2_pin, light3_pin, led1_pin, led2
 sound.init()
 
 # Choose which trigger for this board
-<<<<<<< Updated upstream
-my_trigger = trigger.Trigger3(board)
-=======
 my_trigger = trigger.Trigger2(board)
->>>>>>> Stashed changes
 
 try:
     while True:
