@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 class Gpio:
 
-    def __init__(self, button, light1, light2=None, light3=None):
+    def __init__(self, button, light1, light2=None, light3=None, led1=None, led2=None, led3=None, led4=None, led5=None):
         GPIO.setmode(GPIO.BCM)
         self.button = button
         setup_input(button)
@@ -11,10 +11,25 @@ class Gpio:
         setup_output(light1, "LOW")
         self.light2 = light2
         if self.light2 is not None:
-            setup_output(light2, "HIGH")
+            setup_output(light2, "LOW")
         self.light3 = light3
         if self.light3 is not None:
             setup_output(light3, "LOW")
+        self.led1 = led1
+        if self.led1 is not None:
+            setup_output(led1, "LOW")
+        self.led2 = led2
+        if self.led2 is not None:
+            setup_output(led2, "LOW")
+        self.led3 = led3
+        if self.led3 is not None:
+            setup_output(led3, "LOW")
+        self.led4 = led4
+        if self.led4 is not None:
+            setup_output(led4, "LOW")
+        self.led5 = led5
+        if self.led5 is not None:
+            setup_output(led5, "LOW")
 
 
 def setup_input(pin):
