@@ -1,6 +1,8 @@
+import os
 import gpio
 import sound
 import trigger
+from pygame import mixer
 
 
 # Raspberry Pi pin setup
@@ -17,10 +19,14 @@ fog_off_pin = 25
 board = gpio.Gpio(button_pin, light1_pin, light2_pin, light3_pin, led1_pin, led2_pin, led3_pin, led4_pin, fog_on_pin, fog_off_pin)
 
 # Initialize audio library
-sound.init()
+os_path = os.path.dirname(os.path.realpath(__file__)) + "/Sounds/"
+file_name = "othermother_one_final.mp3"
+file = os_path + file_name
+
+sound.init(sound.get_sample_rate(file))
 
 # Choose which trigger for this board
-my_trigger = trigger.Trigger1(board)
+my_trigger = trigger.Trigger1(board, file)
 
 try:
     while True:

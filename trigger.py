@@ -9,9 +9,8 @@ os_path = os.path.dirname(os.path.realpath(__file__)) + "/Sounds/"
 
 class Trigger1:
 
-    def __init__(self, board):
-        file_name = "winnie_glorious_final.mp3"
-        self.sound = os_path + file_name
+    def __init__(self, board, file):
+        self.sound = file
         self.board = board
         self.playing = False
         sound.load_sound(self.sound)
@@ -19,10 +18,10 @@ class Trigger1:
     def play(self):
         self.playing = True
         sound.play_sound()
-        sleep(0.6)
-        lights.strobe(self.board.light1, 1, 0.1)
+        sleep(0.4)
+        lights.strobe(self.board.light1, 3, 0.08)
         lights.turn_on(self.board.light1)
-        sleep(8.0)
+        sleep(3.6)
         lights.turn_off(self.board.light1)
         self.playing = False
         
