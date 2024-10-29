@@ -1,54 +1,32 @@
-import RPi.GPIO as GPIO
-from time import sleep
-from pygame import mixer
-import os
+import gpio
+import sound
+import trigger
 
-# Variable Definition
-rly_pin = 26
-btn_pin = 16
-cur_dir = os.path.dirname(os.path.realpath(__file__))
-sound_file = cur_dir + "/Alma TS.mp3"
-isPlaying = False
 
-# Set up pins
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(rly_pin, GPIO.OUT)
-GPIO.setup(btn_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+# Raspberry Pi pin setup
+button_pin = 16
+light1_pin = 26
+light2_pin = 6
+light3_pin = 5
+led1_pin = 17
+led2_pin = 27
+led3_pin = 22
+led4_pin = 23
+fog_on_pin = 24
+fog_off_pin = 25
+board = gpio.Gpio(button_pin, light1_pin, light2_pin, light3_pin, led1_pin, led2_pin, led3_pin, led4_pin, fog_on_pin, fog_off_pin)
 
-# Initialize pygame mixer and load sound
-mixer.init()
-music = mixer.music
-music.load(sound_file)
+# Initialize audio library
+sound.init()
 
-# Function setup
-def turnOnLight(sleepTime):
-    GPIO.output(rly_pin, GPIO.HIGH)
-    sleep(sleepTime)
+# Choose which trigger for this board
+my_trigger = trigger.Trigger1(board)
 
-def turnOffLight(sleepTime):
-    GPIO.output(rly_pin, GPIO.LOW)
-    sleep(sleepTime)
-    
-def strobe(amount, sleepTime):
-    for _ in range(amount):
-        turnOnLight(sleepTime)
-        turnOffLight(sleepTime)
-
-def trigger():
-    music.play()
-    sleep(0.5)
-    strobe(6, 0.1)
-    turnOnLight(2.6)
-    turnOffLight(0.3)
-    strobe(3, 0.05)
-
-# Start board
 try:
     while True:
-        if not GPIO.input(btn_pin) and not isPlaying and not music.get_busy():
-            isPlaying = True
-            trigger()
-            isPlaying = False
+        if not gpio.read_input(board.button) and not my_trigger.playing and not sound.is_busy():
+            my_trigger.play()
 
 finally:
     GPIO.cleanup()
+    print("Have A Nice Day!")
